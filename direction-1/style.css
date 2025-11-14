@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Asimovian&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jacquard+24&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Staatliches&family=Syncopate:wght@400;700&family=Syne:wght@400..800&family=Zen+Dots&display=swap');
+
+:root {
+	--fontp: "Rethink Sans", sans-serif;
+	--fontheader: "DM Sans", sans-serif;
+
+	/* --logop: "Jacquard 24", serif;
+	--fontsizelogo: 2rem; */
+
+	--fontsizeh1: 4rem;
+	--lineheighth1: .8em;
+
+	--fontsizeh2: 5rem;
+	--lineheighth2: 1em;
+
+	--fontsizeblockquote: 2.8rem;
+	--lineheightblockquote: .9em;
+
+	--fontsizep: 1.2rem;
+	--lineheightp: 1.4em;
+
+	--fontsizefooter: 2.4rem;
+
+	--inline: 10vw;
+	/* --quotemax: 42ch; */
+	--paddingblock: 1rem;
+	--paddinginline: 1rem;
+	--marginblock: 3rem;
+	--gap: 3rem;
+	
+	--backgroundcolor: #EE1C26;
+	--gradientcolor: #F8996D;
+	--bodytextcolor: black;
+	--accentcolor: black;
+	--bordercolor: firebrick;
+
+	scroll-behavior: smooth;
+
+	--blockstart: -.05em;
+	--blockend: -.05em;
+	--inlinestart: -.01em;
+	--inlineend: -.01em;
+
+}
+
+body {
+	background-color: var(--backgroundcolor);
+	color: var(--bodytextcolor);
+	padding-inline: var(--paddinginline);
+	font-family: var(--fontp);
+	margin-block-end: 6rem;
+}
+
+/* ------------------Nav-------------------- */
+
+nav svg path {
+	fill: white;
+}
+
+nav {
+	display: block;
+	text-transform: uppercase;
+	margin-inline: calc(50% - 50vw);
+	inline-size: 100vw;
+	position: fixed;
+	inset-block-end: 0;
+	inset-inline: 0;
+	z-index: 10;
+}
+
+nav > ul {
+	display: flex;
+	color: var(--bodytextcolor);
+	align-items: center;
+
+	& > li:first-of-type {
+		background-color: black;
+		padding-inline: 2rem;
+		flex: 0 0 auto;
+	}
+
+	& > li:not(:first-child) {
+		flex: 1 1 0;
+	}
+
+	& > li:nth-of-type(2) {
+		background: linear-gradient(90deg, #1C70EE 0%, #6DDFF8 75%, #1C70EE 96%);
+	}
+
+	& > li:nth-of-type(3) {
+		background: linear-gradient(90deg, #EEC41C 0%, #F6F86D 75%, #EEC41C 96%);
+	}
+
+	& > li {
+		padding-block: calc(var(--paddingblock) / 2);
+		font-size: var(--fontsizep);
+		font-weight: 500;
+	}
+
+	& > li > a {
+		display: block;
+		text-align: center;
+	}
+}
+
+/* ------------------Hero-------------------- */
+
+header {
+	margin-block-start: var(--paddingblock);
+}
+
+h1 {
+	font-family: var(--fontheader);
+	text-align: start;
+	font-size: var(--fontsizeh1);
+	color: var(--accentcolor);
+	line-height: var(--lineheighth1);
+	font-weight: 500;
+	text-transform: uppercase;
+	hyphens: manual;
+	display: flow-root;
+	margin-block-end: var(--paddingblock);
+	/* inline-size: fit-content;
+	margin-inline-start: var(--inlinestart);
+	margin-inline-end: var(--inlineend); */
+
+	/* &::before, 
+	&::after {
+		content: '';
+		display: block;
+		visibility: hidden;
+		margin-block-start: var(--blockstart);
+		margin-block-end: var(--blockend);
+	} */
+
+	& > span {
+		display: block;
+	}
+
+	& > span:first-of-type {
+		text-align: start;
+		background: linear-gradient(90deg, var(--backgroundcolor) 0%, var(--gradientcolor) 75%, var(--backgroundcolor) 96%)
+	}
+	
+	& > span:nth-of-type(2) {
+		text-align: end;
+		background: linear-gradient(90deg, var(--backgroundcolor) 0%, var(--gradientcolor) 75%, var(--backgroundcolor) 96%)
+	}
+
+	& > span:nth-of-type(3) {
+		text-align: start;
+		background: linear-gradient(90deg, var(--backgroundcolor) 0%, var(--gradientcolor) 46%, var(--backgroundcolor) 96%)
+	}
+
+	& > span:nth-of-type(4) {
+		text-align: center;
+		background: linear-gradient(90deg, var(--backgroundcolor) 57%, var(--gradientcolor) 100%)
+	}	
+
+	& > span:nth-of-type(5) {
+		text-align: end;
+		background: linear-gradient(90deg, var(--backgroundcolor) 0%, var(--gradientcolor) 19%, var(--backgroundcolor) 57%, var(--gradientcolor) 96%)
+	}
+
+	& > span:nth-of-type(6) {
+		text-align: start;
+		background: linear-gradient(90deg, var(--gradientcolor) 0%, var(--backgroundcolor) 36%)
+	}
+
+	& > span:nth-of-type(7) {
+		text-align: center;
+		background: linear-gradient(90deg, var(--gradientcolor) 3%, var(--backgroundcolor) 63%, var(--gradientcolor) 85%, var(--backgroundcolor) 94%)
+	}
+}
+
+header > ul {
+	display: flex;
+	justify-content: space-between;
+	font-size: var(--fontsizep);
+	font-weight: 300;
+	font-style: italic;
+	border-block-end-width: 0.1rem;
+	border-block-end-style: solid;
+	border-block-end-color: var(--bordercolor);
+	
+	& > li {
+		padding-block: 1rem;
+	}
+
+	& > li:last-of-type {
+		justify-content: end;
+	}
+
+
+}
+
+
+
+
+/* ------------------Main-------------------- */
+
+/* h2 {
+	font-size: var(--fontsizeh2);
+} */
+
+article > p {
+	margin-block: var(--marginblock);
+	line-height: var(--lineheightp);
+	hyphens: none;
+	color: var(--bodytextcolor);
+	font-weight: 500;
+	font-size: var(--fontsizep);
+}
+
+blockquote {
+	/* max-inline-size: 20ch;
+	margin-inline: auto; */
+	font-family: var(--fontheader);
+	font-size: var(--fontsizeblockquote);
+	line-height: var(--lineheightblockquote);
+	color: var(--accentcolor);
+	font-weight: 500;
+	text-wrap: balance;
+	margin-block: 5rem;
+
+	& > span {
+		display: block;
+	}
+
+	& > span:first-of-type {
+		text-align: start;
+		background: linear-gradient(90deg, var(--backgroundcolor) 0%, var(--gradientcolor) 75%, var(--backgroundcolor) 96%)
+	}
+	
+	& > span:nth-of-type(2) {
+		text-align: center;
+		background: linear-gradient(90deg, var(--backgroundcolor) 0%, var(--gradientcolor) 46%, var(--backgroundcolor) 96%)
+	}
+
+	& > span:last-of-type {
+		text-align: end;
+		background: linear-gradient(90deg, var(--backgroundcolor) 0%, var(--gradientcolor) 19%, var(--backgroundcolor) 57%, var(--gradientcolor) 96%)
+	}
+}
+
+article a {
+	text-decoration: underline;
+	text-decoration-color: var(--gradientcolor);
+	text-decoration-thickness: .15rem;
+	/* font-weight: 300; */
+}
+
+.italic {
+	font-style: italic;
+}
+
+
+/* ------------------Footer-------------------- */
