@@ -24,7 +24,8 @@
 	--fontsizesummary: 1.8rem;
 
 	--fontsizeh2: 2.5rem;
-	--lineheighth2: 1.2em;
+	--lineheighth2: 1em;
+	--letterspacingh2: .03em;
 
 	--fontsizeblockquote: 2.8rem;
 	--lineheightblockquote: .9em;
@@ -50,13 +51,14 @@
 
 	@media (width >= 800px) {
 		--fontsizeh1: 5.5rem;
-		--fontsizeh2: 3rem;
+		--fontsizeh2: 3.5rem;
 	}
 
 	@media (width >= 1400px) {
 		--fontsizeh1: 10rem;
-		--fontsizeh2: 4rem;
 		--fontsizesummary: 2rem;
+		--fontsizefootnote: 1.2rem;
+		--lineheightfootnote: 1.6em;
 	}
 }
 
@@ -81,16 +83,14 @@ body {
 
 
 /* ---------------- Typography ---------------- */
-h1, h2, summary {
-	font-family: var(--fontheader);
-	text-transform: lowercase;
-}
-
 h1 {
-	text-align: end;
-	font-weight: 400;
+	text-align: start;
+	font-family: var(--fontheader);
+	font-weight: 500;
 	font-size: var(--fontsizeh1);
 	line-height: var(--lineheighth1);
+	text-transform: uppercase;
+	hyphens: manual;
 }
 
 h2 {
@@ -98,17 +98,25 @@ h2 {
 	font-size: var(--fontsizeh2);
 	font-weight: 500;
 	line-height: var(--lineheighth2);
+	font-family: var(--fontheader);
 }
 
 summary {
+	font-family: var(--fontheader);
 	font-weight: 300;
 	font-size: var(--fontsizesummary);
 }
 
-p, footer {
+p {
 	font-family: var(--fontp);
 	font-size: var(--fontsizep);
 	line-height: var(--lineheightp);
+}
+
+footer {
+	font-family: var(--fontp);
+	font-size: var(--fontsizefooter);
+	line-height: var(--lineheightfooter);
 }
 
 a {
@@ -121,9 +129,11 @@ a {
 	font-size: var(--fontsizelogo);
 }
 
-em {
+em, 
+.italic {
 	font-style: italic;
 }
+
 
 
 /* ---------------- Nav Bar ---------------- */
@@ -143,6 +153,7 @@ nav {
 
 		& > li {
 			block-size: var(--mediumpadding);
+			transition: background-color 0.3s ease;
 					
 			& > a {
 				display: flex;
@@ -157,6 +168,7 @@ nav {
 
 					& > path {
 						fill: var(--black);
+						transition: fill 0.3s ease;
 					}
 				}
 			}
@@ -168,6 +180,18 @@ nav {
 			&:nth-of-type(1) {
 				background-color: var(--white);
 				padding-inline: var(--smallpadding);
+
+				&:hover {
+					background-color: var(--gradientbase);
+					
+					& svg path {
+						fill: var(--black);
+					}
+					
+					& .logo {
+						color: var(--black);
+					}
+				}
 				
 				& > a > section {
 					display: flex;
@@ -177,6 +201,7 @@ nav {
 
 					& > .logo {
 						display: none;
+						transition: color 0.3s ease;
 
 						@media (width >= 800px) {
 							display: block;
@@ -255,6 +280,10 @@ main {
 
 	& > section {
 		padding: var(--smallpadding);
+
+		@media (width >= 800px) {
+			padding: var(--mediumpadding);
+		}
 	}
 
 	@media (width >= 800px) {
@@ -399,6 +428,9 @@ main {
 
 	& > h1 {
 		grid-area: h1;
+		text-transform: lowercase;
+		font-weight: 400;
+		text-align: end;
 	}
 
 	& > p:nth-of-type(1) {
@@ -420,6 +452,7 @@ details {
 	& > summary {
 		cursor: pointer;
 		position: relative;
+		text-transform: lowercase;
 
 		&::after {
 			content: "▸";
@@ -448,17 +481,22 @@ details {
 		& > h2 {
 			grid-area: h2;
 			text-align: start;
-			text-transform: none;
+			text-transform: uppercase;
+			letter-spacing: var(--letterspacingh2);
 		}
 
 		& > p:nth-of-type(1) {
 			grid-area: date;
 			text-align: start;
+			font-style: italic;
+			line-height: var(--lineheightfootnote);
 		}
 
 		& > p:nth-of-type(2) {
 			grid-area: author;
 			text-align: start;
+			font-style: italic;
+			line-height: var(--lineheightfootnote);
 		}
 
 		& > a {
@@ -466,12 +504,12 @@ details {
 			text-align: end;
 			text-transform: lowercase;
 			font-style: italic;
-			padding-block-start: 30vh;
+			padding-block-start: 20vh;
 			font-size: var(--fontsizep);
 
-			/* @media (width >= 800px) {
+			@media (width >= 800px) {
 				padding-block-start: 50vh;
-			} */
+			}
 		}
 	}
 
@@ -486,21 +524,15 @@ details {
 			max-block-size: 100vh;
 		}
 	}
-
-	/* @media (width >= 800px) {
-		&[open] {
-			& > div {
-				opacity: 0;
-				max-block-size: 0;
-				padding-block-start: 0;
-			}
-		}
-	} */
 }
 
 #intro > details > div,
 #colophon > details > div {
 	display: block;
+
+	& > p {
+		font-style: normal;
+	}
 }
 
 #identity > details > div {
@@ -513,8 +545,13 @@ details {
 	& > p:nth-of-type(3) {
 		grid-area: author2;
 		text-align: start;
+		font-style: italic;
+		line-height: var(--lineheightfootnote);
 	}
 }
+
+
+
 
 /* ---------------- Footer ---------------- */
 footer {
@@ -533,12 +570,12 @@ footer {
 
 		& > a {
 			font-size: var(--fontsizefooter);
-		}
-	}
 
-	& a:hover {
-		text-decoration: underline;
-		text-decoration-color: var(--black);
+			&:hover {
+				text-decoration: underline;
+				text-decoration-color: var(--black);
+			}
+		}
 	}
 
 	@media (width >= 800px) {

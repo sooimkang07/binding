@@ -1,3 +1,7 @@
+:root {
+	--fontsizeh2: 1.6rem;
+}
+
 #hero, main, footer {
 	padding-inline: var(--smallpadding);
 }
@@ -8,20 +12,15 @@
 
 /* ------------------Hero-------------------- */
 #hero {
+	display: flex;
+	flex-direction: column;
 	margin-block-start: var(--xlpadding);
+	gap: var(--gap);
 }
 
 h1 {
-	font-family: var(--fontheader);
-	text-align: start;
-	font-size: var(--fontsizeh1);
-	color: var(--black);
-	line-height: var(--lineheighth1);
 	font-weight: 500;
-	text-transform: uppercase;
-	hyphens: manual;
 	display: flow-root;
-	margin-block-end: var(--smallpadding);
 
 	& > span {
 		display: block;
@@ -55,20 +54,21 @@ header > ul {
 	
 	& > li {
 		padding-block: 1rem;
-	}
 
-	& > li:last-of-type {
-		justify-content: end;
+		&:last-of-type {
+			justify-content: end;
+		}
 	}
 }
-
-
-
 
 
 /* ------------------Main-------------------- */
 main {
 	display: block;
+	
+	@media (width >= 800px) {
+		margin-block-start: var(--xlpadding);
+	}
 }
 
 article > p {
@@ -78,15 +78,23 @@ article > p {
 	color: var(--black);
 	font-weight: 400;
 	font-size: var(--fontsizep);
-}
+	
+	&:last-of-type {
+		margin-block-end: var(--mediumpadding);
+	}
 
-article > p:last-of-type {
-	margin-block-end: var(--mediumpadding);
+		& > a {
+		text-decoration: underline;
+		text-decoration-color: var(--blue);
+		text-decoration-thickness: .25rem;
+
+			&:hover {
+				background-color: var(--blue); 
+			}
+		}
 }
 
 blockquote {
-	/* max-inline-size: 20ch;
-	margin-inline: auto; */
 	font-family: var(--fontheader);
 	font-size: var(--fontsizeblockquote);
 	line-height: var(--lineheightblockquote);
@@ -115,23 +123,11 @@ blockquote {
 	}	
 }
 
-article a {
-	text-decoration: underline;
-	text-decoration-color: var(--blue);
-	text-decoration-thickness: .25rem;
-	/* font-weight: 300; */
-}
-
-em, 
-.italic {
-	font-style: italic;
-}
-
-.definition {
+/* .definition {
 	text-decoration-line: underline;
 	text-decoration-style: dotted;
 	text-decoration-color: var(--black);
-}
+} */
 
 
 
@@ -140,6 +136,10 @@ em,
 
 footer {
 	margin-inline: var(--smallpadding);
+
+	@media (width >= 800px) {
+		margin-inline: var(--mediumpadding);
+	}
 }
 
 
@@ -148,27 +148,47 @@ footer {
 
 /* ---------------- Media Queries ---------------- */
 @media (width >= 800px) {
-	:root {
-		--fontsizeh1: 8rem;
-		--fontsizeh2: 3rem;
-		--fontsizeblockquote: 3.5rem;
-	}
+	#flexbody {
+		display: flex;
+		flex-direction: row;
+		gap: 0;
+		align-items: flex-start;
 
-	main {
-		margin-inline: 10vw;
-	}
+		& > header {
+			flex: 0 0 40vw;	
+			position: sticky;
+			inset-block-start: var(--xlpadding);
+			align-self: flex-start;
+			margin-block-start: 0;
+			padding-block-start: 0;
+			min-block-size: 82vh;
+			justify-content: space-between;		
+			padding-inline-start: var(--mediumpadding);
+		}
 
+		& > main {
+			flex: 1;			
+			padding-inline-start: var(--mediumpadding);		
+			padding-inline-end: 8vw;
+			margin-block-start: var(--xlpadding);
+		}
+	}
 }
 
 @media (width >= 1400px) {
 	:root {
-		--fontsizeh1: 12rem;
-		--fontsizeh2: 3rem;
+		--fontsizeh1: 10rem;
 		--fontsizep: 1.4rem;
-		--fontsizeblockquote: 3.8rem;
+		--fontsizeblockquote: 3.5rem;
 	}
 
-	main {
-		margin-inline: 25vw;
+	#flexbody {
+		gap: var(--gap);
+
+		& > main {
+			flex: 1;			
+			padding-inline-start: var(--mediumpadding);		
+			padding-inline-end: 10vw;
+		}
 	}
 }
