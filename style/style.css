@@ -1,0 +1,230 @@
+#hero, main, footer {
+	padding-inline: var(--smallpadding);
+}
+
+
+
+
+
+/* ------------------Hero-------------------- */
+#hero {
+	margin-block-start: var(--xlpadding);
+}
+
+h1 {
+	font-family: var(--fontheader);
+	text-align: start;
+	font-size: var(--fontsizeh1);
+	color: var(--black);
+	line-height: var(--lineheighth1);
+	font-weight: 500;
+	text-transform: uppercase;
+	hyphens: manual;
+	display: flow-root;
+	margin-block-end: var(--smallpadding);
+
+	& > span {
+		display: block;
+	}
+
+	& > span:nth-of-type(1) {
+		text-align: start;
+		background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 75%, var(--yellow) 96%)
+	}
+
+	& > span:nth-of-type(2) {
+		text-align: end;
+		background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 46%, var(--yellow) 96%)
+	}
+
+	& > span:nth-of-type(3) {
+		text-align: center;
+		background: linear-gradient(90deg, var(--yellow) 57%, var(--gradientbase) 100%)
+	}	
+
+	& > span:nth-of-type(4) {
+		text-align: end;
+		background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 19%, var(--yellow) 57%, var(--gradientbase) 96%)
+	}
+
+	& > span:nth-of-type(5) {
+		text-align: start;
+		background: linear-gradient(90deg, var(--gradientbase) 0%, var(--yellow) 36%)
+	}
+
+	& > span:nth-of-type(6) {
+		text-align: center;
+		background: linear-gradient(90deg, var(--gradientbase) 3%, var(--yellow) 63%, var(--gradientbase) 85%, var(--yellow) 94%)
+	}
+}
+
+header > ul {
+	display: flex;
+	justify-content: space-between;
+	font-size: var(--fontsizep);
+	font-weight: 300;
+	font-style: italic;
+	border-block-end-width: 0.1rem;
+	border-block-end-style: solid;
+	border-block-end-color: var(--gradientbase);
+	
+	& > li {
+		padding-block: 1rem;
+	}
+
+	& > li:last-of-type {
+		justify-content: end;
+	}
+}
+
+
+
+
+/* ------------------Main-------------------- */
+main {
+	display: block;
+}
+
+article > p {
+	margin-block-end: var(--largepadding);
+	line-height: var(--lineheightp);
+	hyphens: none;
+	color: var(--black);
+	font-weight: 400;
+	font-size: var(--fontsizep);
+}
+
+article > p:last-of-type {
+	margin-block-end: var(--mediumpadding);
+}
+
+blockquote {
+	/* max-inline-size: 20ch;
+	margin-inline: auto; */
+	font-family: var(--fontheader);
+	font-size: var(--fontsizeblockquote);
+	line-height: var(--lineheightblockquote);
+	color: var(--black);
+	font-weight: 500;
+	text-wrap: balance;
+	margin-block: 5rem;
+
+	& > span {
+		display: block;
+	}
+
+	& > span:nth-of-type(1) {
+		text-align: start;
+		background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 75%, var(--yellow) 96%)
+	}
+
+	& > span:nth-of-type(2) {
+		text-align: end;
+		background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 46%, var(--yellow) 96%)
+	}
+
+	& > span:nth-of-type(3) {
+		text-align: center;
+		background: linear-gradient(90deg, var(--yellow) 57%, var(--gradientbase) 100%)
+	}	
+}
+
+article a {
+	text-decoration: underline;
+	text-decoration-color: var(--yellow);
+	text-decoration-thickness: .25rem;
+	/* font-weight: 300; */
+}
+
+em, 
+.italic {
+	font-style: italic;
+}
+
+.definition {
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+	text-decoration-color: var(--black);
+}
+
+
+
+
+
+/* ------------------Footnotes-------------------- */
+aside > h2 {
+	font-size: var(--fontsizeh2);
+	line-height: var(--lineheighth2);
+	text-align: start;
+	background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 75%, var(--yellow) 96%)
+}
+
+aside, 
+sup {
+	color: var(--black);
+	font-size: var(--fontsizefootnote);
+	line-height: var(--lineheightfootnote);
+	/* padding-block-end: calc(var(--marginblock) * 2); */
+	/* scroll-margin-top: calc((var(--paddingmargin) / 2) + var(--fontsizeh2) + var(--paddingmargin)); height of header + p margin */
+}
+
+sup {
+	color: var(--yellow);
+	vertical-align: top;
+	scroll-margin-top: var(--xlpadding); 
+}
+
+aside {
+	& > ol {
+		list-style-type: decimal;
+		font-size: var(--fontsizefootnote);
+		font-family: var(--fontp);
+		list-style-position: inside;
+		line-height: var(--lineheightfootnote);
+		margin-block: var(--mediumpadding);
+	}
+
+	& > ol > li::marker {
+		color: var(--yellow);
+	}
+
+	& > ol > li > a {
+		color: var(--yellow);
+	}
+}
+
+
+
+/* ------------------Footer-------------------- */
+
+footer {
+	margin-inline: var(--smallpadding);
+}
+
+
+
+/* ---------------- Media Queries ---------------- */
+@media (width >= 800px) {
+	:root {
+		--fontsizeh1: 8rem;
+		--fontsizeh2: 3rem;
+		--fontsizeblockquote: 3.5rem;
+	}
+
+	main {
+		margin-inline: 10vw;
+	}
+}
+
+@media (width >= 1400px) {
+	:root {
+		--fontsizeh1: 10rem;
+		--fontsizeh2: 3rem;
+		--fontsizep: 1.4rem;
+		--fontsizeblockquote: 3.8rem;
+	}
+
+	main {
+		margin-inline: 25vw;
+	}
+}
