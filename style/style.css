@@ -1,260 +1,156 @@
 :root {
-	--fontsizeh2: 1.6rem;
+	--font-size-h1: 3rem;
+	--font-size-h2: 1.8rem;
+	--line-height-h2: 1.2em;
 
-	@media (width >= 800px) {
-		--fontsizeh2: 2rem;
+	@media (width <= 401px) {
+		--font-size-h1: 2rem;
+		--font-size-blockquote: 2rem;
+	}
+
+	@media (width >= 1050px) {
+		--font-size-h1: 2.6rem;
+	}
+		
+	@media (width >= 1400px) {
+		--font-size-h1: 3.1rem;
+		--font-size-h2: 2rem;
+	}
+
+	@media (width >= 1700px) {
+		--font-size-h1: 4rem;
 	}
 }
 
-#hero, main, footer {
-	padding-inline: var(--smallpadding);
+
+/* ------------------Nav-------------------- */
+nav > ul > li:nth-of-type(3) > a {
+	background-color: var(--style-color);
+	border-inline-width: 6px;
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
+	color: var(--border-color);
+
+	@media (width >= 1050px) {
+		border: var(--window-border);
+	}
 }
-
-
-
 
 
 /* ------------------Hero-------------------- */
-#hero {
-	display: flex;
-	flex-direction: column;
-	margin-block-start: var(--xlpadding);
-	gap: var(--gap);
+.border-pattern > span {
+	&:is(:nth-of-type(1), :nth-of-type(4), :nth-of-type(9), :nth-of-type(12)) {
+		background-color: var(--style-corner-color);
+	}
 }
 
 h1 {
-	font-weight: 500;
-	display: flow-root;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-areas:
+		"style   	empty1"
+		"empty2 	not"
+		"four  		four"
+		"empty5		letter"
+		"word  		empty6";
 
 	& > span {
+		background-color: var(--style-color);
 		display: block;
-	}
 
-	& > span:nth-of-type(1) {
-		text-align: start;
-		background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 75%, var(--yellow) 96%)
-	}
+		&:nth-of-type(1) {
+			grid-area: style;
+			text-align: start;
+		}
 
-	& > span:nth-of-type(2) {
-		text-align: end;
-		background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 46%, var(--yellow) 96%)
-	}
+		&:nth-of-type(2) {
+			grid-area: empty1;
+			background-color: var(--title-color);
+		}
 
-	& > span:nth-of-type(3) {
-		text-align: center;
-		background: linear-gradient(90deg, var(--yellow) 57%, var(--gradientbase) 100%)
-	}	
+		&:nth-of-type(3) {
+			grid-area: empty2;
+			background-color: var(--title-color);
+		}
 
-	& > span:nth-of-type(4) {
-		text-align: end;
-		background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 19%, var(--yellow) 57%, var(--gradientbase) 96%)
-	}
+		&:nth-of-type(4) {
+			grid-area: not;		
+			text-align: end;
+		}
 
-	& > span:nth-of-type(5) {
-		text-align: start;
-		background: linear-gradient(90deg, var(--gradientbase) 0%, var(--yellow) 36%)
-	}
+		&:nth-of-type(5) {
+			grid-area: four;		
+			text-align: center;
+		}
 
-	& > span:nth-of-type(6) {
-		text-align: center;
-		background: linear-gradient(90deg, var(--gradientbase) 3%, var(--yellow) 63%, var(--gradientbase) 85%, var(--yellow) 94%)
-	}
-}
+		&:nth-of-type(6) {
+			grid-area: empty5;		
+			background-color: var(--title-color);
+		}
 
-header > ul {
-	display: flex;
-	justify-content: space-between;
-	font-size: var(--fontsizep);
-	font-weight: 300;
-	font-style: italic;
-	border-block-end-width: 0.1rem;
-	border-block-end-style: solid;
-	border-block-end-color: var(--gradientbase);
-	
-	& > li {
-		padding-block: 1rem;
+		&:nth-of-type(7) {
+			grid-area: letter;		
+			text-align: end;
+		}
 
-		&:last-of-type {
-			justify-content: end;
+		&:nth-of-type(8) {
+			grid-area: word;		
+			text-align: start;
+		}
+
+		&:nth-of-type(9) {
+			grid-area: empty6;		
+			background-color: var(--title-color);
 		}
 	}
 }
-
-
 
 
 /* ------------------Main-------------------- */
-main {
-	display: block;
-}
+article > p > a, 
+article > p > sup > a, 
+#about-author-style > p > a, 
+aside > ol > li > a, 
+.article-link > div > a {
+	text-decoration-color: var(--style-color);
 
-article > p {
-	margin-block-end: var(--largepadding);
-	line-height: var(--lineheightp);
-	hyphens: none;
-	color: var(--black);
-	font-weight: 400;
-	font-size: var(--fontsizep);
-	
-	&:last-of-type {
-		margin-block-end: var(--mediumpadding);
-	}
-
-		& > a, 
-		& > sup {
-		text-decoration: underline;
-		text-decoration-color: var(--yellow);
-		text-decoration-thickness: .25rem;
-
-			&:hover {
-				background-color: var(--yellow); 
-			}
+		&:hover {
+			color: var(--border-color);
+			background-color: var(--style-color); 
 		}
-}
-
+	}
 
 blockquote {
-	font-family: var(--fontheader);
-	font-size: var(--fontsizeblockquote);
-	line-height: var(--lineheightblockquote);
-	color: var(--black);
-	font-weight: 500;
-	text-wrap: balance;
-	margin-block: 5rem;
-
-	& > span {
-		display: block;
-	}
-
-	& > span:nth-of-type(1) {
-		text-align: start;
-		background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 75%, var(--yellow) 96%)
-	}
-
-	& > span:nth-of-type(2) {
-		text-align: end;
-		background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 46%, var(--yellow) 96%)
-	}
-
-	& > span:nth-of-type(3) {
-		text-align: center;
-		background: linear-gradient(90deg, var(--yellow) 57%, var(--gradientbase) 100%)
-	}	
+	background-color: var(--style-color);	
 }
-
-/* .definition {
-	text-decoration-line: underline;
-	text-decoration-style: dotted;
-	text-decoration-color: var(--black);
-} */
-
-
-
 
 
 /* ------------------Footnotes-------------------- */
-aside, sup {
-	color: var(--black);
-	font-size: var(--fontsizefootnote);
-	line-height: var(--lineheightfootnote);
-	margin-block-start: var(--xlpadding);
-
-	& > h2 {
-		font-size: var(--fontsizeh2);
-		line-height: var(--lineheighth2);
-		text-align: start;
-		background: linear-gradient(90deg, var(--yellow) 0%, var(--gradientbase) 75%, var(--yellow) 96%)
-	}
-
-	& > ol {
-		list-style-type: decimal;
-		font-size: var(--fontsizefootnote);
-		font-family: var(--fontp);
-		list-style-position: inside;
-		line-height: var(--lineheightfootnote);
-		margin-block: var(--mediumpadding);
-	
-		& > li::marker {
-			color: var(--black);
-			background-color: var(--yellow);
-		}
-
-		& > li > a {
-			color: var(--black);
-			text-decoration: underline;
-			text-decoration-color: var(--yellow);
-			text-decoration-thickness: .25rem;
-
-			&:hover {
-				background-color: var(--yellow);
-			}
-		}
-	}
+aside > div > h2 {
+	background-color: var(--style-color);
 }
 
-sup {
-	color: var(--black);
-	vertical-align: top;
-	scroll-margin-top: 50vh; 
+
+/* ------------------About Author-------------------- */
+#about-author-style > div > h2 {
+	background-color: var(--style-color);
 }
 
+
+/* ------------------Back to Top Arrow-------------------- */
+#back-to-top {
+	background-color: var(--style-color);
+
+	&:hover {
+		background-color: var(--title-color);
+	}
+}
 
 
 /* ------------------Footer-------------------- */
-
 footer {
-	margin-inline: var(--smallpadding);
+	margin-inline: var(--small-padding);
+	padding-inline: var(--small-padding);
 
-	@media (width >= 800px) {
-		margin-inline: var(--mediumpadding);
-	}
-}
-
-
-
-/* ---------------- Media Queries ---------------- */
-@media (width >= 800px) {
-	#flexbody {
-		display: flex;
-		flex-direction: row;
-		gap: 0;
-		align-items: flex-start;
-
-		& > header {
-			flex: 0 0 40vw;	
-			position: sticky;
-			inset-block-start: var(--xlpadding);
-			align-self: flex-start;
-			margin-block-start: 0;
-			padding-block-start: 0;
-			min-block-size: 82vh;
-			justify-content: space-between;		
-			padding-inline-start: var(--mediumpadding);
-		}
-
-		& > main {
-			flex: 1;			
-			padding-inline-start: var(--mediumpadding);		
-			padding-inline-end: 8vw;
-			margin-block-start: var(--xlpadding);
-		}
-	}
-}
-
-@media (width >= 1400px) {
-	:root {
-		--fontsizeh1: 7rem;
-		--fontsizep: 1.4rem;
-		--fontsizeblockquote: 3.5rem;
-	}
-
-	#flexbody {
-		gap: var(--gap);
-
-		& > main {
-			flex: 1;			
-			padding-inline-start: var(--mediumpadding);		
-			padding-inline-end: 10vw;
-		}
+	@media (width >= 750px) {
+		margin-inline: var(--medium-padding);
 	}
 }
